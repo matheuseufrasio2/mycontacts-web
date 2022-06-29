@@ -1,13 +1,11 @@
-import {
-  Container,
-} from './styles';
+import { ContactForm } from '../../components/ContactForm';
+import { PageHeader } from '../../components/PageHeader';
 
 export function EditContact() {
   return (
-    <Container>
-      <h1>
-        EditContact
-      </h1>
-    </Container>
+    <>
+      <PageHeader title="Matheus Eufrásio" />
+      <ContactForm buttonLabel="Salvar alterações" />
+    </>
   );
 }

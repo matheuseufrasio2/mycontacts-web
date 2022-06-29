@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   Card,
   Container,
@@ -18,9 +19,9 @@ export function Home() {
       </InputSearchContainer>
       <Header>
         <strong>3 contatos</strong>
-        <a href="/">
+        <Link to="/new">
           Novo contato
-        </a>
+        </Link>
       </Header>
 
       <ListContainer>
@@ -41,9 +42,9 @@ export function Home() {
             <span>(11) 96857-3746</span>
           </div>
           <div className="actions">
-            <a href="/">
-              <img src={edit} alt="Delete" />
-            </a>
+            <Link to="edit/123">
+              <img src={edit} alt="Edit" />
+            </Link>
             <button type="button">
               <img src={trash} alt="Delete" />
             </button>

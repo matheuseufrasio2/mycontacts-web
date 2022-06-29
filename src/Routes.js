@@ -7,9 +7,9 @@ import { NewContact } from './pages/NewContact';
 export function Routes() {
   return (
     <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/new" exact component={NewContact} />
-      <Route path="/edit/:id" exact component={EditContact} />
+      <Route path="/new" component={NewContact} />
+      <Route path="/edit/:id" component={EditContact} />
+      <Route exact path="/" component={Home} />
     </Switch>
   );
 }

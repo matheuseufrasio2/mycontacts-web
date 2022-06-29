@@ -1,13 +1,12 @@
-import {
-  Container,
-} from './styles';
+import { PageHeader } from '../../components/PageHeader';
+
+import { ContactForm } from '../../components/ContactForm';
 
 export function NewContact() {
   return (
-    <Container>
-      <h1>
-        NewContact
-      </h1>
-    </Container>
+    <>
+      <PageHeader title="Novo Contato" />
+      <ContactForm buttonLabel="Cadastrar" />
+    </>
   );
 }
