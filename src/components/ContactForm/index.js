@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import useErrors from '../../hooks/useErrors';
 import isEmailValid from '../../utils/isEmailValid';
+import formatPhone from '../../utils/formatPhone';
 
 import {
   Form,
@@ -16,12 +17,19 @@ import Button from '../Button';
 import { FormGroup } from '../FormGroup';
 
 export function ContactForm({ buttonLabel }) {
-  const { setError, removeError, getErrorMessageByFieldName } = useErrors();
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [category, setCategory] = useState('');
+
+  const {
+    setError,
+    removeError,
+    getErrorMessageByFieldName,
+    errors,
+  } = useErrors();
+
+  const isFormValid = (name && errors.length === 0);
 
   function handleNameChange(event) {
     setName(event.target.value);
@@ -46,16 +54,20 @@ export function ContactForm({ buttonLabel }) {
     }
   }
 
+  function handlePhoneChange(event) {
+    setPhone(formatPhone(event.target.value));
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
 
-    // const data = {
-    //   name,
-    //   email,
-    //   phone,
-    //   category,
-    // };
-    // console.log(data);
+    const data = {
+      name,
+      email,
+      phone: phone.replace(/\D/g, ''),
+      category,
+    };
+    console.log(data);
   }
 
   return (
@@ -64,7 +76,7 @@ export function ContactForm({ buttonLabel }) {
         <Input
           value={name}
           error={getErrorMessageByFieldName('name')}
-          placeholder="Nome"
+          placeholder="Nome *"
           onChange={handleNameChange}
         />
       </FormGroup>
@@ -81,7 +93,8 @@ export function ContactForm({ buttonLabel }) {
         <Input
           value={phone}
           placeholder="Telefone"
-          onChange={(event) => setPhone(event.target.value)}
+          onChange={handlePhoneChange}
+          maxLength="15"
         />
       </FormGroup>
       <FormGroup>
@@ -95,7 +108,10 @@ export function ContactForm({ buttonLabel }) {
         </Select>
       </FormGroup>
       <ButtonContainer>
-        <Button type="submit">
+        <Button
+          type="submit"
+          disabled={!isFormValid}
+        >
           {buttonLabel}
         </Button>
 
