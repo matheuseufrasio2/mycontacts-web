@@ -61,13 +61,13 @@ export function ContactForm({ buttonLabel }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const data = {
-      name,
-      email,
-      phone: phone.replace(/\D/g, ''),
-      category,
-    };
-    console.log(data);
+    // const data = {
+    //   name,
+    //   email,
+    //   phone: phone.replace(/\D/g, ''),
+    //   category,
+    // };
+    // console.log(data);
   }
 
   return (
