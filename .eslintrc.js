@@ -29,5 +29,6 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'class-methods-use-this': 'off',
     'react/no-unescaped-entities': 'off',
+    'no-empty': ['error', { allowEmptyCatch: true }],
   },
 };

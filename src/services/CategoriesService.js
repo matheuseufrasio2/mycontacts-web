@@ -6,7 +6,7 @@ class CategoriesServiceLayer {
   }
 
   async listCategories() {
-    return this.httpClient.get('categories');
+    return this.httpClient.get('/categories');
   }
 }
 
