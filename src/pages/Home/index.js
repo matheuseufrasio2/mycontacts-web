@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 
 import { ContactsService } from '../../services/ContactsService';
-import Button from '../../components/Button';
+import { Button } from '../../components/Button';
 
 import {
   Card,

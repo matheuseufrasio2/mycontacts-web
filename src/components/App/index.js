@@ -6,12 +6,14 @@ import defaultTheme from '../../assets/styles/themes/default';
 import { Header } from '../Header';
 import { Container } from './styles';
 import { Routes } from '../../Routes';
+import { ToastContainer } from '../Toast/ToastContainer';
 
 function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyles />
+        <ToastContainer />
         <Container>
           <Header />
           <Routes />
