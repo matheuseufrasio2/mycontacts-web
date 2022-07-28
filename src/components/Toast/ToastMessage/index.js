@@ -8,7 +8,6 @@ import xCircleIcon from '../../../assets/images/icons/x-circle.svg';
 import checkCircle from '../../../assets/images/icons/check-circle.svg';
 
 export function ToastMessage({ text, type }) {
-  console.log(type);
   return (
     <Container type={type}>
       {type === 'danger' && <img src={xCircleIcon} alt="X" />}
