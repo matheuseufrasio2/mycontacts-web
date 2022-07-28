@@ -43,7 +43,7 @@ export function ContactForm({ buttonLabel, onSubmit }) {
         const categoriesList = await CategoriesService.listCategories();
 
         setCategories(categoriesList);
-      } catch {} finally {
+      } catch { } finally {
         setIsLoadingCategories(false);
       }
     }
@@ -93,6 +93,11 @@ export function ContactForm({ buttonLabel, onSubmit }) {
     await onSubmit(data);
 
     setIsSubmitting(false);
+
+    setName('');
+    setEmail('');
+    setPhone('');
+    setCategoryId('');
   }
 
   return (
