@@ -5,11 +5,9 @@ import { PageHeader } from '../../components/PageHeader';
 import { ContactsService } from '../../services/ContactsService';
 import { Loader } from '../../components/Loader';
 import { toast } from '../../utils/toast';
-import { useIsMounted } from '../../hooks/useIsMounted';
 import { useSafeAsyncAction } from '../../hooks/useSafeAsyncAction';
 
 export function EditContact() {
-  // const [contact, setContact] = useState({});
   const [isLoadingContact, setIsLoadingContact] = useState(true);
   const [contactName, setContactName] = useState('');
 
@@ -17,13 +15,13 @@ export function EditContact() {
 
   const { id } = useParams();
   const history = useHistory();
-  const isMounted = useIsMounted();
   const safeAsyncAction = useSafeAsyncAction();
 
   useEffect(() => {
     async function loadContact() {
       try {
         const contactData = await ContactsService.getContactById(id);
+        console.log({ contactData });
 
         safeAsyncAction(() => {
           contactFormRef.current.setFieldsValues(contactData);
@@ -43,18 +41,12 @@ export function EditContact() {
     }
 
     loadContact();
-  }, [history, id, isMounted]);
+  }, [history, id, safeAsyncAction]);
 
-  async function handleSubmit(formData) {
+  async function handleSubmit(contact) {
     try {
-      const contact = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        category_id: formData.categoryId,
-      };
-
       const updatedContact = await ContactsService.updateContact(id, contact);
+
       setContactName(updatedContact.name);
 
       toast({
